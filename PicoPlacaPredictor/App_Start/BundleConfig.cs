@@ -25,6 +25,10 @@ namespace PicoPlacaPredictor
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            
+            // Bundle for inputmask
+            bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
+                        "~/Scripts/inputmask/jquery.inputmask.js"));
         }
     }
 }
