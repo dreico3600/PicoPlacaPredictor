@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoPlacaPredictor.Front", "PicoPlacaPredictor\PicoPlacaPredictor.Front.csproj", "{D3B17E82-30B4-4337-A347-21F11A806F2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoPlacaPredictor.UI", "PicoPlacaPredictor\PicoPlacaPredictor.UI.csproj", "{D3B17E82-30B4-4337-A347-21F11A806F2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoPlacaPredictor.Tests", "PicoPlacaPredictor.Tests\PicoPlacaPredictor.Tests.csproj", "{498B3569-1F81-479D-9113-C65DB3FAE37D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoPlacaPredictor.Data", "PicoPlacaPredictor.Data\PicoPlacaPredictor.Data.csproj", "{9D00F006-A962-467B-96D8-1D948B47F62C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoPlacaPredictor.BLL", "PicoPlacaPredictor.Data\PicoPlacaPredictor.BLL.csproj", "{9D00F006-A962-467B-96D8-1D948B47F62C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Front", "01.Front", "{6FD53011-B3B0-40F8-BCDC-BE3945CB3317}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Back", "02.Back", "{57F2EDAA-6DF8-45CB-8B09-7E3D6EC08139}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Tests", "03.Tests", "{747D0D67-1243-4674-AF7B-84D9E518120E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +92,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3B17E82-30B4-4337-A347-21F11A806F2B} = {6FD53011-B3B0-40F8-BCDC-BE3945CB3317}
+		{498B3569-1F81-479D-9113-C65DB3FAE37D} = {747D0D67-1243-4674-AF7B-84D9E518120E}
+		{9D00F006-A962-467B-96D8-1D948B47F62C} = {57F2EDAA-6DF8-45CB-8B09-7E3D6EC08139}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FD57378-D947-4854-8AB0-24D830585DC5}

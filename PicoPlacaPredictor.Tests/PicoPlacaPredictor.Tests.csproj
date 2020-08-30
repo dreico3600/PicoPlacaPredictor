@@ -100,13 +100,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PicoPlacaPredictor.Data\PicoPlacaPredictor.Data.csproj">
+    <ProjectReference Include="..\PicoPlacaPredictor.Data\PicoPlacaPredictor.BLL.csproj">
       <Project>{9D00F006-A962-467B-96D8-1D948B47F62C}</Project>
-      <Name>PicoPlacaPredictor.Data</Name>
+      <Name>PicoPlacaPredictor.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PicoPlacaPredictor\PicoPlacaPredictor.Front.csproj">
+    <ProjectReference Include="..\PicoPlacaPredictor\PicoPlacaPredictor.UI.csproj">
       <Project>{D3B17E82-30B4-4337-A347-21F11A806F2B}</Project>
-      <Name>PicoPlacaPredictor.Front</Name>
+      <Name>PicoPlacaPredictor.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

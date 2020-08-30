@@ -29,5 +29,9 @@ namespace PicoPlacaPredictor.Data
         {
             return _listRestrictedPicoPlaca;
         }
+        public bool PredictPicoPlaca(TimeSpan time, string dayName, int lastDigitPlate)
+        {
+            return true;
+        }
     }
 }
