@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PicoPlacaPredictor.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace PicoPlacaPredictor.Models
         [Required(ErrorMessage = "The time field is required")]
         [RegularExpression(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$",
             ErrorMessage = "Please enter a time valid in format hh:mm, ex: 14:32")]
+        [DateTimeTravel(ErrorMessage = "The combined date and time fields must be after current")]
         public string TimeTravel { get; set; }
     }
 }
