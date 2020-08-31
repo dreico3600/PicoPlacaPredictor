@@ -2,18 +2,53 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<div class="row" style="align-content:center">
+    <h2>Predictor "Pico y Placa"</h2>
+    <p>Read about this application <a id="myBtn" href="#">here</a></p>
+</div>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Predictor "Pico y Placa"</h2>
+        </div>
+        <!-- Modal content -->
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>About this web app</h4>
+                    <p>Thanks for using this software, this program use <strong>CAR PLATE, DATE AND TIME TRAVEL</strong> to predict if you will drive on restriction driving.</p>
+                    <p>Please, fill the three fields in the form page with the information for your travel and press the button at bottom to predict.</p>
+                    <p>Here on your right, You have some additional information about "Pico y Placa" restrictions that served to create this program</p>
+                    <br />
+                    <p>To have more information about this web app please redict to pages About and Contact located in the menu at top of this page.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Information about "Pico y Placa"</h4>
+                    <img src="https://lh3.googleusercontent.com/proxy/6g8zGPl5UFqqWvn-nIJDfM14ien5MtCopEh-QmnhiPeBFqg02XZZNGghZh6sBJ1p1ddcnPKPw3HtYOO5ATSwFhUjwkmopnUyMS2iKZDHocavpTRKD_b_nBGwOX6R0vc" />
+                </div>
+            </div>
+        </div>
 
+    </div>
+</div>
+
+<!-- Main page -->
 <div class="row">
+    <!-- Left Panel -->
     <div class="col-lg-6">
+        <!-- Ajax form with fields input for predictor -->
         @using (Ajax.BeginForm("PredictPicoPlaca", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "resultPredict" }))
         {
             @Html.AntiForgeryToken()
             <div class="form-horizontal">
-                <h4>Pico y Placa Predictor</h4>
+                <h4>Input Fields Predictor</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+                <!-- Car Plate -->
                 <div class="form-group">
                     @Html.LabelFor(model => model.CarPlate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -21,7 +56,7 @@
                         @Html.ValidationMessageFor(model => model.CarPlate, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
+                <!-- Date Travel -->
                 <div class="form-group">
                     @Html.LabelFor(model => model.DateTravel, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -29,7 +64,7 @@
                         @Html.ValidationMessageFor(model => model.DateTravel, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
+                <!-- Time travel -->
                 <div class="form-group">
                     @Html.LabelFor(model => model.TimeTravel, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -37,7 +72,7 @@
                         @Html.ValidationMessageFor(model => model.TimeTravel, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
+                <!-- Submit button for this form -->
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Validate Pico y Placa" class="btn btn-default" />
@@ -46,24 +81,144 @@
             </div>
         }
     </div>
-    <div class="col-lg-4">
+    <!-- Right Panel -->
+    <div class="col-lg-6">
+        <!-- Fill this div with partial view as a return of ajax form -->
         <div class="form-horizontal" id="resultPredict">
-            
+
         </div>
     </div>
 </div>
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     @Scripts.Render("~/bundles/inputmask")
 
+    @* Modal Styles in-line *@
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @@-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @@keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
+
+    @* Mask input for fields *@
     <script>
         $(document).ready(function ($) {
             $('#carplate').inputmask("aaa-9999");
             $('#datetravel').inputmask("99/99/9999");
             $('#timetravel').inputmask("99:99");
         });
+    </script>
+
+    @* Modal function *@
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 }

@@ -12,25 +12,18 @@ namespace PicoPlacaPredictor.Common
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             ValidationResult result = null;
-
+            
+            // Get the model to verify
             object instance = validationContext.ObjectInstance;
-
             InputDataFieldsModel obj = (InputDataFieldsModel)validationContext.ObjectInstance;
-
+            
+            // Validate if datetime travel is after current
             var convertedDateTime = Convert.ToDateTime(obj.DateTravel + " " + obj.TimeTravel);
             if (convertedDateTime <= DateTime.Now)
                 result = new ValidationResult("The combined date and time fields must be after current");
+
+            // send results
             return result;
         }
-
-        //public override bool IsValid(object value)
-        //{
-        //    bool flag = false;
-        //    InputDataFieldsModel obj = (InputDataFieldsModel)value;
-        //    var convertedDateTime = Convert.ToDateTime(obj.DateTravel + " " + obj.TimeTravel);
-        //    if (convertedDateTime > DateTime.Now)
-        //        flag = true;
-        //    return flag;
-        //}
     }
 }

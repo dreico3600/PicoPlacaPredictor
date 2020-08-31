@@ -1,6 +1,43 @@
-﻿<div>
-    <h1>Result</h1>
-    <h2>Here goes the result about the predictor</h2>
-    <p>This paragraf needs some style and colours for presentation</p>
-    <h2>End of result</h2>
+﻿@model PicoPlacaPredictor.Models.OutputPredictResultModel
+<!-- Result of predictor partial view -->
+<div>
+    <h4>Results from predictor</h4>
+    <hr />
+    <!-- State of result like title -->
+    <h1 style="color:@Model.ColorHex">@Model.RestrictionTitle</h1>
+    <!-- Message from predictor -->
+    <p>@Model.RestrictionMessage</p>
+    <!-- If has some restriction fill aditional information -->
+    @if (Model.CodeResult == 2 || Model.CodeResult == 3)
+    {
+        <h4>"Pico y Placa" for: @Model.RestrictionDetails.DayName</h4>
+        <p>The last digit numbers on the license plate are:</p>
+        <!-- Digits numbers with restriction for day of prediction -->
+        <ul>
+            @foreach (var item in Model.RestrictionDetails.LastDigitPlate)
+            {
+                <li>@item</li>
+            }
+        </ul>
+        <!-- Table with hours restriction for day of prediciton -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Day part</th>
+                    <th>Start at</th>
+                    <th>Finish at</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.RestrictionDetails.RestrictedHoursByDay)
+                {
+                    <tr>
+                        <th>@item.DayPart</th>
+                        <th>@item.Start</th>
+                        <th>@item.Finish</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 </div>
