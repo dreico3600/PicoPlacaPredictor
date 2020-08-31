@@ -172,7 +172,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\PredictPicoPlaca.cshtml" />
+    <Content Include="Views\Home\_PredictPicoPlaca.cshtml" />
+    <Content Include="Views\Home\_ValidationSummaryDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

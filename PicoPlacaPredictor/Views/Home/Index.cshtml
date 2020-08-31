@@ -2,13 +2,13 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div id="div-headertext" class="row" style="align-content:center">
+<div class="row" style="align-content:center">
     <h2>Predictor "Pico y Placa"</h2>
-    <p>Read about this application <a id="myBtn" href="#">here</a></p>
+    <p>Read about this application <a id="moreInfoButton" href="#">here</a></p>
 </div>
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="moreInfoModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
@@ -18,7 +18,7 @@
         <!-- Modal content -->
         <div class="modal-body">
             <div class="row">
-                <div class="col-lg-6" id="div-modalbody-right">
+                <div class="col-lg-6">
                     <h4>About this web app</h4>
                     <p>Thanks for using this software, this program use <strong>CAR PLATE, DATE AND TIME TRAVEL</strong> to predict if you will drive on restriction driving.</p>
                     <p>Please, fill the three fields in the form page with the information for your travel and press the button at bottom to predict.</p>
@@ -26,9 +26,9 @@
                     <br />
                     <p>To have more information about this web app please redict to pages About and Contact located in the menu at top of this page.</p>
                 </div>
-                <div class="col-lg-4" id="div-modalbody-left">
+                <div class="col-lg-4">
                     <h4>Information about "Pico y Placa"</h4>
-                    <img src="https://lh3.googleusercontent.com/proxy/6g8zGPl5UFqqWvn-nIJDfM14ien5MtCopEh-QmnhiPeBFqg02XZZNGghZh6sBJ1p1ddcnPKPw3HtYOO5ATSwFhUjwkmopnUyMS2iKZDHocavpTRKD_b_nBGwOX6R0vc" />
+                    <img src="https://raw.githubusercontent.com/dreico3600/pico-y-placa-quito-json/master/picoplacaperimetro-v01.jpg" />
                 </div>
             </div>
         </div>
@@ -41,44 +41,44 @@
     <!-- Left Panel -->
     <div class="col-lg-6">
         <!-- Ajax form with fields input for predictor -->
-        @using (Ajax.BeginForm("PredictPicoPlaca", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "resultPredict" }))
+        @using (Ajax.BeginForm("PredictPicoPlaca", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "resultPredict"}))
         {
             @Html.AntiForgeryToken()
-            <div class="form-horizontal">
-                <h4>Input Fields Predictor</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <!-- Car Plate -->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CarPlate, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.CarPlate, new { htmlAttributes = new { @class = "form-control", @id = "carplate" } })
-                        @Html.ValidationMessageFor(model => model.CarPlate, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <!-- Date Travel -->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DateTravel, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.DateTravel, new { htmlAttributes = new { @class = "form-control", @id = "datetravel" } })
-                        @Html.ValidationMessageFor(model => model.DateTravel, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <!-- Time travel -->
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TimeTravel, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TimeTravel, new { htmlAttributes = new { @class = "form-control", @id = "timetravel" } })
-                        @Html.ValidationMessageFor(model => model.TimeTravel, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <!-- Submit button for this form -->
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" id="inputValidatePicoPlaca" value="Validate Pico y Placa" class="btn btn-default" />
-                    </div>
+        <div id="inputForm" class="form-horizontal">
+            <h4>Input Fields Predictor</h4>
+            <hr />
+            <!-- Car Plate -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.CarPlate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CarPlate, new { htmlAttributes = new { @class = "form-control", @id = "carplate", placeholder = "Plate number in format AAA-9999" } })
+                    @Html.ValidationMessageFor(model => model.CarPlate, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <!-- Date Travel -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateTravel, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateTravel, new { htmlAttributes = new { @class = "form-control", @id = "datetravel", placeholder = "Date travel in format dd/mm/yyyy" } })
+                    @Html.ValidationMessageFor(model => model.DateTravel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <!-- Time travel -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.TimeTravel, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TimeTravel, new { htmlAttributes = new { @class = "form-control", @id = "timetravel", placeholder = "Time travel in format 24h" } })
+                    @Html.ValidationMessageFor(model => model.TimeTravel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <!-- Submit button for this form -->
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" id="inputSubmitValidate" value="Validate Pico y Placa" class="btn btn-default" />
+                    <input type="button" class="btn btn-warning" id="inputButtonClear" value="Clear form" onclick="location.href='@Url.Action("Index", "Home")'" />
+                </div>
+            </div>
+        </div>
         }
     </div>
     <!-- Right Panel -->
@@ -196,10 +196,10 @@
     @* Modal function *@
     <script>
         // Get the modal
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("moreInfoModal");
 
         // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+        var btn = document.getElementById("moreInfoButton");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
@@ -221,4 +221,5 @@
             }
         }
     </script>
+
 }

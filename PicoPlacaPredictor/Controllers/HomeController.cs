@@ -37,7 +37,7 @@ namespace PicoPlacaPredictor.Controllers
 
                 // Prepare Model result
                 result.CodeResult = resultPredict.CodeResult;
-                result.RestrictionDetails = resultPredict.PicoPlacaRestriction; 
+                result.RestrictionDetails = resultPredict.PicoPlacaRestriction;
                 result.DateTimeTravel = datetimeTravel;
                 result.LastDigitPlate = lastDigitPlate;
                 result.ColorHex = ConfigurationManager.AppSettings[resultPredict.CodeResult + ":color"];
@@ -51,9 +51,10 @@ namespace PicoPlacaPredictor.Controllers
                                                             resultPredict.HourRestriction.DayPart,
                                                             resultPredict.HourRestriction.Finish.ToString());
                 }
+                return PartialView("_PredictPicoPlaca", result);
             }
-            
-            return PartialView("PredictPicoPlaca", result);
+            else
+                return PartialView("_ValidationSummaryDisplay", ViewData.ModelState);
         }
 
         public ActionResult About()

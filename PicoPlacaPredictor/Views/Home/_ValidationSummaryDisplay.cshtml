@@ -1,0 +1,25 @@
+﻿@model ModelStateDictionary
+
+@{
+    var cls = "alert-danger";
+    var type = ViewBag.Type;
+    if (type != null && type.ToString().ToLower() == "warning")
+    {
+        cls = "alert-warning";
+    }
+
+    var message = "Please attend to the following problems:";
+    if (ViewBag.Message != null && ViewBag.Message.ToString().Trim() != "")
+    {
+        message = ViewBag.Message.ToString().Trim();
+    }
+}
+<h4>Validations for Predictor</h4>
+<hr />
+@if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Count() > 0))
+{
+    <div class="alert @cls">
+        <button class="close" data-dismiss="alert" aria-hidden="true">&times;   </button>
+        @Html.ValidationSummary(false, message)
+    </div>
+}
