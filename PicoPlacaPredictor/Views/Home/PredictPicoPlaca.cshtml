@@ -4,23 +4,23 @@
     <h4>Results from predictor</h4>
     <hr />
     <!-- State of result like title -->
-    <h1 style="color:@Model.ColorHex">@Model.RestrictionTitle</h1>
+    <h1 id="h1-RestrictionTitle" style="color:@Model.ColorHex">@Model.RestrictionTitle</h1>
     <!-- Message from predictor -->
-    <p>@Model.RestrictionMessage</p>
+    <p id="p-RestrictionMessage">@Model.RestrictionMessage</p>
     <!-- If has some restriction fill aditional information -->
     @if (Model.CodeResult == 2 || Model.CodeResult == 3)
     {
-        <h4>"Pico y Placa" for: @Model.RestrictionDetails.DayName</h4>
+        <h4 id="h4-RestrictionDayNam">"Pico y Placa" for: @Model.RestrictionDetails.DayName</h4>
         <p>The last digit numbers on the license plate are:</p>
         <!-- Digits numbers with restriction for day of prediction -->
-        <ul>
+        <ul id="ul-LastDigitPlate">
             @foreach (var item in Model.RestrictionDetails.LastDigitPlate)
             {
                 <li>@item</li>
             }
         </ul>
         <!-- Table with hours restriction for day of prediciton -->
-        <table class="table">
+        <table class="table" id="table-RestrictedHoursByDay">
             <thead>
                 <tr>
                     <th>Day part</th>

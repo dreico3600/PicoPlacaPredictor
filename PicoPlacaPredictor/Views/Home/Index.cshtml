@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div class="row" style="align-content:center">
+<div id="div-headertext" class="row" style="align-content:center">
     <h2>Predictor "Pico y Placa"</h2>
     <p>Read about this application <a id="myBtn" href="#">here</a></p>
 </div>
@@ -18,7 +18,7 @@
         <!-- Modal content -->
         <div class="modal-body">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="div-modalbody-right">
                     <h4>About this web app</h4>
                     <p>Thanks for using this software, this program use <strong>CAR PLATE, DATE AND TIME TRAVEL</strong> to predict if you will drive on restriction driving.</p>
                     <p>Please, fill the three fields in the form page with the information for your travel and press the button at bottom to predict.</p>
@@ -26,7 +26,7 @@
                     <br />
                     <p>To have more information about this web app please redict to pages About and Contact located in the menu at top of this page.</p>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" id="div-modalbody-left">
                     <h4>Information about "Pico y Placa"</h4>
                     <img src="https://lh3.googleusercontent.com/proxy/6g8zGPl5UFqqWvn-nIJDfM14ien5MtCopEh-QmnhiPeBFqg02XZZNGghZh6sBJ1p1ddcnPKPw3HtYOO5ATSwFhUjwkmopnUyMS2iKZDHocavpTRKD_b_nBGwOX6R0vc" />
                 </div>
@@ -75,7 +75,7 @@
                 <!-- Submit button for this form -->
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Validate Pico y Placa" class="btn btn-default" />
+                        <input type="submit" id="inputValidatePicoPlaca" value="Validate Pico y Placa" class="btn btn-default" />
                     </div>
                 </div>
             </div>
